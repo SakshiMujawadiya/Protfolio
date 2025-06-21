@@ -1,15 +1,15 @@
-
-
 import { useTheme } from "../context/ThemeContext";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import React, { useState } from "react";
 
-export default function Navbar({ toggleTheme, isDarkMode }) {
- 
+export default function Navbar() {
+  const { darkMode, setDarkMode } = useTheme(); // use context directly
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMenu = () => setIsMobileMenuOpen(false);
+
+  const toggleTheme = () => setDarkMode((prev) => !prev); // toggle function
 
   const navLinks = [
     { href: "#about", label: "About" },
@@ -24,7 +24,7 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <a href="#" className="text-2xl font-bold tracking-wider text-gray-900 dark:text-white">
-          Sakshi
+          Sakshi Mujawadiya
         </a>
 
         {/* Desktop Nav Links */}
@@ -42,14 +42,14 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
 
         {/* Right Side Controls */}
         <div className="flex items-center gap-4">
-          {/* Theme Toggle */}
+          {/* Theme Toggle Button */}
           <button
-        onClick={toggleTheme}
-        aria-label="Toggle Dark Mode"
-        className="p-2 rounded bg-blue-500 text-white dark:bg-yellow-400 dark:text-black transition"
-      >
-        {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-      </button>
+            onClick={toggleTheme}
+            aria-label="Toggle Dark Mode"
+            className="p-2 rounded bg-blue-500 text-white dark:bg-yellow-400 dark:text-black transition"
+          >
+            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
 
           {/* Mobile Menu Toggle */}
           <button onClick={toggleMobileMenu} className="md:hidden p-2">
@@ -76,5 +76,3 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
     </nav>
   );
 }
-
-

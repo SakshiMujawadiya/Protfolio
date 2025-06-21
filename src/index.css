@@ -1,7 +1,12 @@
+/* app.css or main.css */
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
 html {
     scroll-behavior: smooth;
   }
   body {
   font-family: 'Inter', 'Helvetica', sans-serif;
 }
+
