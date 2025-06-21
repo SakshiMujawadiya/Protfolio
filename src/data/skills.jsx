@@ -1,3 +1,5 @@
+import { version } from "react";
+
 export const skills = [
   "HTML",
   "CSS",
@@ -10,5 +12,10 @@ export const skills = [
   "Express.js",
   "MongoDB",
   "MySQL",
+  "Postman",
+  "UI/UX Design",
+  "Responsive Design",
+  "version control",
+
   ];
   
